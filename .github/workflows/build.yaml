@@ -11,4 +11,4 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install libgtk-4-dev dotnet-sdk-8.0
       - name: Run generator
-        run: ./build.sh
+        run: dotnet run --project ./build/Gtk4Sharp.Bindings.Generator/Gtk4Sharp.Bindings.Generator.csproj
