@@ -4,6 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Configuration gtkConfiguration = new Configuration()
+        {
+            Library = Library.Gtk,
+            DefaultNamespace = "Gtk4Sharp.Gtk",
+            WorkDirPath = "./build/submodules/gtk/gtk",
+            OutputDirectory = "./src/Gtk"
+        };
     }
 }
