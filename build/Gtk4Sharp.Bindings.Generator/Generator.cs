@@ -31,7 +31,8 @@ public static class Generator
             "-I/usr/lib/glib-2.0/include",
             "-I/usr/lib/gcc/x86_64-linux-gnu/11/include",
             "-I/usr/include/x86_64-linux-gnu",
-            "-I/usr/include"
+            "-I/usr/include",
+            "-I/usr/lib/x86_64-linux-gnu/glib-2.0/include"
         };
         
         foreach (string file in configuration.InputFiles)
