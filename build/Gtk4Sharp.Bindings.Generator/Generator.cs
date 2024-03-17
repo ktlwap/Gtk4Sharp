@@ -27,7 +27,10 @@ public static class Generator
             "--language=c",
             "-Wno-pragma-once-outside-header",
             "--include-directory=./build/submodules/gtk",
-            "-I/usr/include/glib-2.0"
+            "-I/usr/include/glib-2.0",
+            "-I/usr/lib/gcc/x86_64-linux-gnu/11/include",
+            "-I/usr/include/x86_64-linux-gnu",
+            "-I/usr/include"
         };
         
         foreach (string file in configuration.InputFiles)
