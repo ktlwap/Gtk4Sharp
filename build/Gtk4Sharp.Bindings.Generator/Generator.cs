@@ -17,9 +17,17 @@ public static class Generator
             PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts);
 
         using var pInvokeGenerator = new PInvokeGenerator(pInvokeConfig);
+
+        CXTranslationUnit_Flags translationUnitFlags = CXTranslationUnit_Flags.CXTranslationUnit_None; 
+        translationUnitFlags |= CXTranslationUnit_Flags.CXTranslationUnit_IncludeAttributedTypes;
+        translationUnitFlags |= CXTranslationUnit_Flags.CXTranslationUnit_VisitImplicitAttributes;
+
+        string[] clangCommandLineArgs = new string[]
+        {
+            "--language=c11",
+            "-Wno-pragma-once-outside-header"
+        };
         
-        CXTranslationUnit_Flags translationUnitFlags = CXTranslationUnit_Flags.CXTranslationUnit_None;
-            
         foreach (string file in configuration.InputFiles)
         {
             string filePath = Path.Combine(configuration.WorkDirPath, file);
@@ -32,7 +40,9 @@ public static class Generator
                 
             using TranslationUnit translationUnit = TranslationUnit.GetOrCreate(handle);
 
-            pInvokeGenerator.GenerateBindings(translationUnit, filePath, Array.Empty<string>(), translationUnitFlags);
+            Console.WriteLine($"Processing {filePath}.");
+            
+            pInvokeGenerator.GenerateBindings(translationUnit, filePath, clangCommandLineArgs, translationUnitFlags);
         }
     }
 }
