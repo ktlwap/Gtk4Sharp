@@ -22,8 +22,10 @@ public static class Generator
             
         foreach (string file in configuration.InputFiles)
         {
-            CXErrorCode translationUnitError = CXTranslationUnit.TryParse(pInvokeGenerator.IndexHandle, file, ReadOnlySpan<string>.Empty, 
-                Array.Empty<CXUnsavedFile>(), translationUnitFlags, out CXTranslationUnit handle);
+            string filePath = Path.Combine(configuration.WorkDirPath, file);
+            
+            CXErrorCode translationUnitError = CXTranslationUnit.TryParse(pInvokeGenerator.IndexHandle, filePath,
+                ReadOnlySpan<string>.Empty, Array.Empty<CXUnsavedFile>(), translationUnitFlags, out CXTranslationUnit handle);
 
             if (translationUnitError != CXErrorCode.CXError_Success)
                 throw new Exception($"Failed to parse file: \"{file}\" with error: \"{translationUnitError}\"");
