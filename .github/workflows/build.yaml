@@ -10,6 +10,6 @@ jobs:
         with:
           submodules: true
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install libclang-dev libgtk-4-dev dotnet-sdk-8.0
+        run: sudo apt-get update && sudo apt-get install libgtk-4-dev dotnet-sdk-8.0
       - name: Run generator
         run: dotnet run --project ./build/Gtk4Sharp.Bindings.Generator/Gtk4Sharp.Bindings.Generator.csproj
