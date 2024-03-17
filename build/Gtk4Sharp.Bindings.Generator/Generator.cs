@@ -32,7 +32,7 @@ public static class Generator
                 
             using TranslationUnit translationUnit = TranslationUnit.GetOrCreate(handle);
 
-            pInvokeGenerator.GenerateBindings(translationUnit, file, Array.Empty<string>(), translationUnitFlags);
+            pInvokeGenerator.GenerateBindings(translationUnit, filePath, Array.Empty<string>(), translationUnitFlags);
         }
     }
 }
