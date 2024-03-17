@@ -14,13 +14,7 @@ public static class Generator
 
         PInvokeGeneratorConfiguration pInvokeConfig = new PInvokeGeneratorConfiguration("c", String.Empty,
             configuration.DefaultNamespace, configuration.OutputDirectory, String.Empty,
-            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts)
-        {
-            IncludedNames = 
-            [
-                "./build/submodules/gtk/gtk",
-            ]
-        };
+            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts);
         
         using PInvokeGenerator pInvokeGenerator = new PInvokeGenerator(pInvokeConfig);
 
@@ -31,7 +25,8 @@ public static class Generator
         string[] clangCommandLineArgs = new string[]
         {
             "--language=c",
-            "-Wno-pragma-once-outside-header"
+            "-Wno-pragma-once-outside-header",
+            "--include-directory=./build/submodules/gtk"
         };
         
         foreach (string file in configuration.InputFiles)
@@ -39,7 +34,7 @@ public static class Generator
             string filePath = Path.Combine(configuration.WorkDirPath, file);
             
             CXErrorCode translationUnitError = CXTranslationUnit.TryParse(pInvokeGenerator.IndexHandle, filePath,
-                ReadOnlySpan<string>.Empty, Array.Empty<CXUnsavedFile>(), translationUnitFlags, out CXTranslationUnit handle);
+                clangCommandLineArgs, Array.Empty<CXUnsavedFile>(), translationUnitFlags, out CXTranslationUnit handle);
 
             if (translationUnitError != CXErrorCode.CXError_Success)
                 throw new Exception($"Failed to parse file: \"{file}\" with error: \"{translationUnitError}\"");
