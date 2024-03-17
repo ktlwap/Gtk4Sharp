@@ -18,7 +18,7 @@ public static class Generator
         {
             IncludedNames =
             [
-                configuration.WorkDirPath + "/gtk"
+                configuration.WorkDirPath
             ]
         };
 
