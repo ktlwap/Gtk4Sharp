@@ -14,9 +14,15 @@ public static class Generator
 
         PInvokeGeneratorConfiguration pInvokeConfig = new PInvokeGeneratorConfiguration("c", String.Empty,
             configuration.DefaultNamespace, configuration.OutputDirectory, String.Empty,
-            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts);
+            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts)
+        {
+            IncludedNames = 
+            [
+                "./build/submodules/gtk/gtk",
+            ]
+        };
         
-        using var pInvokeGenerator = new PInvokeGenerator(pInvokeConfig);
+        using PInvokeGenerator pInvokeGenerator = new PInvokeGenerator(pInvokeConfig);
 
         CXTranslationUnit_Flags translationUnitFlags = CXTranslationUnit_Flags.CXTranslationUnit_None; 
         translationUnitFlags |= CXTranslationUnit_Flags.CXTranslationUnit_IncludeAttributedTypes;
