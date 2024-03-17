@@ -14,14 +14,8 @@ public static class Generator
 
         PInvokeGeneratorConfiguration pInvokeConfig = new PInvokeGeneratorConfiguration("c", String.Empty,
             configuration.DefaultNamespace, configuration.OutputDirectory, String.Empty,
-            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts)
-        {
-            IncludedNames =
-            [
-                configuration.WorkDirPath
-            ]
-        };
-
+            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts);
+        
         using var pInvokeGenerator = new PInvokeGenerator(pInvokeConfig);
 
         CXTranslationUnit_Flags translationUnitFlags = CXTranslationUnit_Flags.CXTranslationUnit_None; 
