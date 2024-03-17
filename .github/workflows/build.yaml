@@ -1,5 +1,5 @@
 name: Generate bindings
-on: create
+on: workflow_dispatch
 
 jobs:
   generate-bindings:
