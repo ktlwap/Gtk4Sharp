@@ -14,7 +14,13 @@ public static class Generator
 
         PInvokeGeneratorConfiguration pInvokeConfig = new PInvokeGeneratorConfiguration("c", String.Empty,
             configuration.DefaultNamespace, configuration.OutputDirectory, String.Empty,
-            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts);
+            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts)
+        {
+            IncludedNames =
+            [
+                configuration.WorkDirPath + "/gtk"
+            ]
+        };
 
         using var pInvokeGenerator = new PInvokeGenerator(pInvokeConfig);
 
