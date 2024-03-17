@@ -9,7 +9,10 @@ class Program
             Library = Library.Gtk,
             DefaultNamespace = "Gtk4Sharp.Gtk",
             WorkDirPath = "./build/submodules/gtk/gtk",
-            OutputDirectory = "./src/Gtk"
+            OutputDirectory = "./src/Gtk",
+            InputFiles = [ "gtk.h" ]
         };
+
+        Generator.Run(gtkConfiguration);
     }
 }
