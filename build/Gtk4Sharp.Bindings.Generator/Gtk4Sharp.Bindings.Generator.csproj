@@ -13,7 +13,6 @@
       <PackageReference Include="libclang" Version="17.0.4" />
       <PackageReference Include="libClangSharp" Version="17.0.4" />
       <PackageReference Include="libClangSharp.runtime.linux-x64" Version="17.0.4" />
-      <PackageReference Include="libClangSharp.runtime.ubuntu.22.04-x64" Version="15.0.0" />
       <PackageReference Include="LibGit2Sharp" Version="0.29.0" />
     </ItemGroup>
 
