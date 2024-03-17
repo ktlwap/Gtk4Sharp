@@ -26,9 +26,9 @@ public static class Generator
         {
             "--language=c",
             "-Wno-pragma-once-outside-header",
-            "--include-directory=./build/submodules/gtk/gtk",
-            "--include-directory=./build/submodules/gtk/gdk",
+            "--include-directory=./build/submodules/gtk",
             "-I/usr/include/glib-2.0",
+            "-I/usr/include/gtk-2.0",
             "-I/usr/lib/glib-2.0/include",
             "-I/usr/lib/gcc/x86_64-linux-gnu/11/include",
             "-I/usr/include/x86_64-linux-gnu",
