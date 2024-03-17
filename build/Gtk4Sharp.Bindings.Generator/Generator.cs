@@ -37,6 +37,18 @@ public static class Generator
 
             if (translationUnitError != CXErrorCode.CXError_Success)
                 throw new Exception($"Failed to parse file: \"{file}\" with error: \"{translationUnitError}\"");
+            else if (handle.NumDiagnostics != 0)
+            {
+                Console.WriteLine($"Diagnostics for '{filePath}':");
+
+                for (uint i = 0; i < handle.NumDiagnostics; ++i)
+                {
+                    using var diagnostic = handle.GetDiagnostic(i);
+
+                    Console.Write("    ");
+                    Console.WriteLine(diagnostic.Format(CXDiagnostic.DefaultDisplayOptions).ToString());
+                }
+            }
                 
             using TranslationUnit translationUnit = TranslationUnit.GetOrCreate(handle);
 
