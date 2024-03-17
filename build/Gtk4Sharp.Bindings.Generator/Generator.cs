@@ -14,10 +14,7 @@ public static class Generator
 
         PInvokeGeneratorConfiguration pInvokeConfig = new PInvokeGeneratorConfiguration("c", String.Empty,
             configuration.DefaultNamespace, configuration.OutputDirectory, String.Empty,
-            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts)
-        {
-            TraversalNames = [ configuration.WorkDirPath + "/gtk" ]
-        };
+            PInvokeGeneratorOutputMode.CSharp, pInvokeConfigOpts);
 
         using var pInvokeGenerator = new PInvokeGenerator(pInvokeConfig);
 
